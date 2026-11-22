@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link rel="stylesheet" href="style.css">
-    <title>Vanya Coin Tapper</title>
+    <title>KravetsCoin — Arcade Edition</title>
 </head>
 <body>
     <div class="container">
@@ -60,6 +60,7 @@
 
             <div class="balance-block">
                 <p class="balance-label">$VANYA BALANCE</p>
+                <p id="combo-text" class="combo-text">🔥 Комбо: 0</p>
                 <div class="money">
                     <img src="https://i.ibb.co/jLVJfTY/coin-mark.png" alt="coin">
                     <h1 id="balance">0</h1>
@@ -106,6 +107,9 @@
                 <img src="https://cdn-icons-png.flaticon.com/512/1055/1055644.png" alt="">
                 <p>Boosts</p>
             </button>
+            <button type="button" class="tablinks" data-tab="tab6" data-default-icon="" data-active-icon="">
+                <span class="nav-emoji">🎮</span><p>Play</p>
+            </button>
             <button type="button" class="tablinks" data-tab="tab4"
                 data-default-icon="https://cdn-icons-png.flaticon.com/512/1077/1077114.png"
                 data-active-icon="https://i.ibb.co/HrjLnP3/image-2.png">
@@ -131,6 +135,8 @@
                     <div class="stat-card"><span>Зароблено</span><strong id="stat-earned">0</strong></div>
                     <div class="stat-card"><span>Друзів</span><strong id="stat-friends">0</strong></div>
                     <div class="stat-card"><span>Завдань</span><strong id="stat-tasks">0</strong></div>
+                    <div class="stat-card"><span>Критичних тапів</span><strong id="stat-crits">0</strong></div>
+                    <div class="stat-card"><span>Щасливих знахідок</span><strong id="stat-lucky">0</strong></div>
                 </div>
                 <h3 class="panel-subtitle">🏆 Ранги за рівнем</h3>
                 <ul id="ranks-list" class="ranks-list"></ul>
@@ -174,6 +180,63 @@
                 <div id="skin-inventory" class="skin-inventory"></div>
                 <h3 class="panel-subtitle">🛍️ Магазин</h3>
                 <div id="characters-grid" class="characters-grid"></div>
+            </div>
+
+
+            <div id="tab6" class="tab panel-scroll panel-animate">
+                <h2 class="panel-title">🎮 KravetsCoin Arcade</h2>
+                <p class="panel-hint">Бий босів, відкривай кейси, випробовуй удачу та збирай досягнення.</p>
+
+                <section class="feature-card">
+                    <h3>👹 Боси</h3><div id="boss-area"></div>
+                </section>
+                <section class="feature-card">
+                    <h3>🎡 Колесо фортуни</h3><p class="feature-note">Одне безкоштовне обертання щодня або 2 500 монет за додаткове.</p>
+                    <div class="wheel-wrap"><div id="wheel-disc" class="wheel-disc">🪙 🎁 ⭐ 💎</div></div>
+                    <button type="button" class="buy-button feature-action" id="wheel-spin">Обертати колесо</button>
+                    <p id="wheel-result" class="feature-result">Твоя удача чекає!</p>
+                </section>
+                <section class="feature-card">
+                    <h3>🎁 Таємні кейси</h3><p class="feature-note">Кожен кейс має шанс на рідкісну нагороду.</p>
+                    <div class="feature-actions">
+                        <button type="button" class="buy-button" data-case="basic">📦 Базовий · 1 000</button>
+                        <button type="button" class="buy-button" data-case="premium">💜 Преміум · 5 000</button>
+                        <button type="button" class="buy-button" data-case="elite">👑 Елітний · 15 000</button>
+                    </div><p id="case-result" class="feature-result">Відкрий кейс, щоб дізнатись нагороду.</p>
+                </section>
+                <section class="feature-card">
+                    <h3>⚡ Реакція</h3><p class="feature-note">Натисни старт і дочекайся зеленого сигналу. Не поспішай!</p>
+                    <div id="reaction-light" class="reaction-light">Натисни «Старт»</div>
+                    <button type="button" class="buy-button feature-action" id="reaction-start">Старт</button>
+                    <p id="reaction-result" class="feature-result">Рекорд: —</p>
+                </section>
+                <section class="feature-card">
+                    <h3>🧠 Перевір пам'ять</h3><p class="feature-note">Запам'ятай послідовність кольорів і повтори її.</p>
+                    <div id="memory-sequence" class="memory-sequence">Послідовність з'явиться тут</div>
+                    <div class="feature-actions">
+                        <button type="button" class="buy-button" id="memory-start">Почати</button>
+                        <button type="button" class="buy-button" id="memory-input" disabled>Я запам'ятав</button>
+                    </div><p id="memory-result" class="feature-result">Правильна відповідь дає монети.</p>
+                </section>
+                <section class="feature-card">
+                    <h3>🔢 Вгадай число</h3><p class="feature-note">Я загадав число від 1 до 5. Вибери одне.</p>
+                    <div class="feature-actions" id="guess-buttons">
+                        <button class="buy-button" data-guess="1">1</button><button class="buy-button" data-guess="2">2</button><button class="buy-button" data-guess="3">3</button><button class="buy-button" data-guess="4">4</button><button class="buy-button" data-guess="5">5</button>
+                    </div><p id="guess-result" class="feature-result">Вгадай — отримай 2 000 монет!</p>
+                </section>
+                <section class="feature-card">
+                    <h3>📜 Щоденні контракти</h3><p class="feature-note">Оновлюються автоматично за датою браузера.</p><div id="contracts-list" class="tasks-list"></div>
+                </section>
+                <section class="feature-card">
+                    <h3>🏅 Досягнення</h3><div id="achievements-list" class="achievement-grid"></div>
+                </section>
+                <section class="feature-card">
+                    <h3>✨ Престиж</h3><p id="prestige-info" class="feature-note"></p>
+                    <div class="feature-actions"><button type="button" class="buy-button" id="prestige-button">Отримати престиж</button><button type="button" class="buy-button" id="prestige-upgrade">Покращити бонус</button></div>
+                </section>
+                <section class="feature-card">
+                    <h3>📈 Статистика пригод</h3><div id="arcade-stats" class="stat-grid"></div>
+                </section>
             </div>
         </div>
 
