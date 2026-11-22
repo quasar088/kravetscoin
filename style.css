@@ -1425,3 +1425,84 @@ body.panel-open .game-layer {
         font-size: 28px;
     }
 }
+
+/* Нові ігрові елементи */
+.combo-text {
+    margin: 5px 0 0;
+    color: #ffd76a;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .03em;
+    text-shadow: 0 0 12px rgba(245, 200, 66, .35);
+    min-height: 16px;
+}
+.task-card .task-progress-wrap {
+    margin-top: 10px;
+}
+.task-progress {
+    min-width: 0;
+}
+button:focus-visible {
+    outline: 2px solid var(--accent-light);
+    outline-offset: 3px;
+}
+
+html, body {
+    overscroll-behavior: none;
+}
+.panel-overlay.is-open {
+    min-height: 0;
+}
+.tab {
+    overscroll-behavior: contain;
+}
+
+
+/* KravetsCoin Arcade expansion */
+.nav-emoji { font-size: 22px; line-height: 24px; }
+.tabs { gap: 2px; }
+.feature-card {
+    position: relative; margin: 12px 0; padding: 15px;
+    background: var(--glass-strong); border: 1px solid var(--glass-border);
+    border-radius: var(--radius); box-shadow: var(--shadow-soft);
+}
+.feature-card h3 { margin: 0 0 9px; color: var(--accent-light); font-size: 16px; }
+.feature-note { color: var(--text-muted); font-size: 12px; line-height: 1.45; margin: 0 0 12px; }
+.feature-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.feature-actions .buy-button { flex: 1 1 90px; }
+.feature-action { width: 100%; margin-top: 10px; }
+.feature-result { color: var(--gold); font-size: 13px; font-weight: 700; min-height: 18px; margin: 10px 0 0; text-align: center; }
+.boss-head { display:flex; align-items:center; gap:12px; margin: 8px 0; }
+.boss-avatar { font-size: 42px; width:58px; height:58px; display:grid; place-items:center; background:var(--glass); border-radius:14px; }
+.boss-meta { flex:1; min-width:0; }
+.boss-meta strong { display:block; color:var(--text); }
+.boss-meta small { color:var(--text-muted); }
+.boss-hp { height:12px; background:rgba(0,0,0,.35); border-radius:20px; overflow:hidden; margin:10px 0; }
+.boss-hp > span { display:block; height:100%; background:linear-gradient(90deg,#e34e70,#ff9b63); transition:width .25s; }
+.boss-attack { width:100%; }
+.wheel-wrap { display:flex; justify-content:center; padding:8px; }
+.wheel-disc { width:150px; height:150px; display:grid; place-items:center; border-radius:50%; border:7px solid #e7b84e; background:conic-gradient(#6e48a8 0 25%,#df9c32 25% 50%,#4c8e92 50% 75%,#9a4770 75%); color:white; font-size:22px; font-weight:900; text-shadow:0 2px 5px #000; box-shadow:0 0 22px var(--gold-glow); }
+.wheel-disc.spinning { animation: wheelSpin 1.5s cubic-bezier(.15,.7,.1,1); }
+@keyframes wheelSpin { to { transform:rotate(1440deg); } }
+.reaction-light { min-height:76px; display:grid; place-items:center; border-radius:12px; background:#743f4d; color:white; font-weight:800; text-align:center; padding:12px; }
+.reaction-light.waiting { background:#a36d2c; }
+.reaction-light.ready { background:#23894b; box-shadow:0 0 24px rgba(60,220,120,.35); }
+.memory-sequence { min-height:50px; display:grid; place-items:center; text-align:center; font-size:24px; letter-spacing:8px; background:rgba(0,0,0,.22); border-radius:10px; padding:10px; margin-bottom:10px; }
+.achievement-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+.achievement { padding:10px; border:1px solid var(--glass-border); border-radius:10px; background:rgba(0,0,0,.18); font-size:12px; }
+.achievement.unlocked { border-color:#d6b44f; background:rgba(245,200,66,.1); }
+.achievement strong { display:block; color:var(--text); margin:4px 0; }
+.achievement small { color:var(--text-muted); }
+.contract-card { display:flex; justify-content:space-between; gap:10px; padding:10px; border:1px solid var(--glass-border); border-radius:10px; background:rgba(0,0,0,.16); }
+.contract-card strong { color:var(--text); font-size:13px; }
+.contract-card small { color:var(--text-muted); display:block; margin-top:4px; }
+.contract-progress { height:5px; background:rgba(0,0,0,.3); border-radius:8px; overflow:hidden; margin-top:7px; }
+.contract-progress span { display:block; height:100%; background:linear-gradient(90deg,var(--accent),var(--gold)); }
+@media(max-width:420px) {
+ .tablinks { max-width:none; font-size:9px; }
+ .tablinks p { font-size:9px; }
+ .feature-card { padding:12px; }
+ .achievement-grid { grid-template-columns:1fr 1fr; }
+}
+
+.reveal { animation: revealPop .45s ease; } @keyframes revealPop { 50% { transform:scale(1.08); text-shadow:0 0 18px var(--gold); } }
